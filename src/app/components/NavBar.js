@@ -66,7 +66,7 @@ export default function Navbar() {
         className={`
           flex flex-col sm:flex-row sm:items-center
           space-y-4 sm:space-y-0 sm:space-x-6
-          mt-4 sm:mt-0 mr-30
+          mt-4 sm:mt-0 mr-9
           ${menuOpen ? 'block' : 'hidden sm:flex'}
         `}
       >
