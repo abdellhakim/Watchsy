@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-[#1E1E1E] text-gray-300 py-8 px-4 sm:px-12 mt-16 border-t border-gray-700">
+    <footer className="w-full bg-[#1E1E1E] text-gray-300 py-8 px-4 sm:px-12 border-t border-gray-700">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
         
         {/* Left: Logo + © */}
