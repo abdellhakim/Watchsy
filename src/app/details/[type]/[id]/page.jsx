@@ -104,7 +104,7 @@ export default function DetailPage() {
         )}
 
         {/* Comments */}
-        <CommentSection mediaId={id} />
+        <CommentSection mediaId={id} type={type} />
       </main>
     </SignedIn>
     </>

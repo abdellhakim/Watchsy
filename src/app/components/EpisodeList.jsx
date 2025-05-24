@@ -57,10 +57,7 @@ export default function EpisodeList({ tvId }) {
               <div>
                 <h3 className="text-xl font-semibold">{ep.episode_number}. {ep.name}</h3>
                 <p className="text-gray-400">{ep.overview}</p>
-                <label className="inline-flex items-center mt-2">
-                  <input type="checkbox" className="mr-2" />
-                  Watched
-                </label>
+                
               </div>
             </div>
           ))}
