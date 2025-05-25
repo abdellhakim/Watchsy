@@ -5,7 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { UserButton, SignedIn, SignedOut, RedirectToSignIn } from '@clerk/nextjs';
 import FavoriteButton from '../../../components/FavoriteButton';
-import WatchlistDropdown from '../../../components/WatchlistDropdown';
+import WatchlistButton from '../../../components/WatchlistButton';
 import CommentSection from '../../../components/CommentSection';
 import EpisodeList from '../../../components/EpisodeList';
 
@@ -82,7 +82,7 @@ export default function DetailPage() {
             <div className="lg:w-1/3 relative">
               <Image src={poster} alt="Poster" width={300} height={450} className="rounded-xl" />
               <FavoriteButton mediaId={id} type={type} />
-              <WatchlistDropdown mediaId={id} type={type} />
+              <WatchlistButton mediaId={id} type={type} />
             </div>
 
             {/* Details */}
@@ -104,7 +104,7 @@ export default function DetailPage() {
         )}
 
         {/* Comments */}
-        <CommentSection mediaId={id} />
+        <CommentSection mediaId={id} type={type} />
       </main>
     </SignedIn>
     </>
