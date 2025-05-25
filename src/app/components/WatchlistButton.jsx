@@ -1,31 +1,27 @@
 'use client';
 
+import { PlusIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useUser } from '@clerk/nextjs';
 
-export default function WatchlistButton({ mediaId, type }) {
+export default function WatchlistButton({ mediaId, type, variant = 'text' }) {
   const { user } = useUser();
   const [added, setAdded] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Vérifie si déjà en favoris
   useEffect(() => {
     const checkIfInWatchlist = async () => {
       if (!user?.id) return;
-
       try {
         const res = await fetch(`/api_test/tmdb/favorites/check?mediaId=${mediaId}&userId=${user.id}`);
         const result = await res.json();
-        if (result.isFavorite) {
-          setAdded(true);
-        }
+        if (result.isFavorite) setAdded(true);
       } catch (err) {
-        console.error('Erreur lors de la vérification du favori');
+        console.error('Erreur vérification favori');
       } finally {
         setLoading(false);
       }
     };
-
     checkIfInWatchlist();
   }, [mediaId, user?.id]);
 
@@ -38,17 +34,28 @@ export default function WatchlistButton({ mediaId, type }) {
       });
 
       const result = await res.json();
-      if (result.success) {
-        setAdded(true);
-      } else {
-        alert(result.message || 'Error adding to watchlist');
-      }
+      if (result.success) setAdded(true);
+      else alert(result.message || 'Erreur ajout');
     } catch (err) {
-      alert('Erreur lors de l\'ajout à la liste');
+      alert("Erreur lors de l'ajout");
     }
   };
 
   if (loading) return null;
+
+  // Deux rendus selon le variant
+  if (variant === 'icon') {
+    return (
+      <button
+        onClick={handleClick}
+        disabled={added}
+        className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded bg-white/20 hover:bg-white/30 backdrop-blur text-white transition"
+        aria-label="Ajouter à la watchlist"
+      >
+        {added ? '✓' : <PlusIcon size={22} />}
+      </button>
+    );
+  }
 
   return (
     <button
