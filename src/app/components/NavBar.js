@@ -73,7 +73,7 @@ export default function Navbar() {
         {[
           { href: '/', label: 'Home' },
           { href: '/explore', label: 'Movies & Shows' },
-          { href: '/support', label: 'Support' },
+          { href: '/favoris', label: 'To Watch' },
         ].map(({ href, label }) => (
           <Link
             key={label}
